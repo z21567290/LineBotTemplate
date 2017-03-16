@@ -31,22 +31,31 @@ func main() {
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf(":%s", port)
 	http.ListenAndServe(addr, nil)
-	/*
-		var err2 error
-		bot, err2 = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
-		log.Println("Bot:", bot, " err:", err)
-		http.HandleFunc("/callback", callbackHandler)
-		port := os.Getenv("PORT")
-		addr := fmt.Sprintf(":%s", port)
-		http.ListenAndServe(addr, nil)
-	*/
+
+	var err2 error
+	bot, err2 = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
+	log.Println("Bot:", bot, " err:", err2)
+	http.HandleFunc("/callback", callbackHandler)
+	port := os.Getenv("PORT")
+	addr := fmt.Sprintf(":%s", port)
+	http.ListenAndServe(addr, nil)
+
 }
 
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
-	events, err := bot.ParseRequest(r)
+	events, err, err2 := bot.ParseRequest(r)
 
 	if err != nil {
 		if err == linebot.ErrInvalidSignature {
+			w.WriteHeader(400)
+		} else {
+			w.WriteHeader(500)
+		}
+		return
+	}
+
+	if err2 != nil {
+		if err2 == linebot.ErrInvalidSignature {
 			w.WriteHeader(400)
 		} else {
 			w.WriteHeader(500)
@@ -67,8 +76,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			//--------------------------------------------------------------
 
 			case *linebot.ImageMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+"ImageOK!")).Do(); err != nil {
-					log.Print(err)
+				if _, err2 = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+"ImageOK!")).Do(); err2 != nil {
+					log.Print(err2)
 				}
 
 			}
