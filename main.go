@@ -17,6 +17,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/line/line-bot-sdk-go/linebot"
 )
@@ -60,22 +61,31 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
-			case *linebot.TextMessage:
 
+			case *linebot.TextMessage:
+				inText := string.ToLower(message.Text)
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" TextOK!")).Do(); err != nil {
 					//發送訊息的格式
 					log.Print(err)
 				}
-
-			case *linebot.ImageMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+message.PreviewImageURL+"ImageOK!")).Do(); err != nil {
-					log.Print(err)
+				if strings.Contains(inText, "我愛你") {
+					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
 				}
-
+				/*
+					if _, err := bot.PushMessage(<to>, linebot.NewTextMessage("hello")).Do(); err != nil {
+					    ...
+					}
+				*/
+				/*
+					case *linebot.ImageMessage:
+						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+message.PreviewImageURL+"ImageOK!")).Do(); err != nil {
+							log.Print(err)
+						}
+				*/
 				//--------------------------------------------------------------
 				/*
 					case *linebot.ImageMessage:
-						if _, err2 = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+"ImageOK!")).Do(); err2 != nil {
+						if _, err2 = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+message.PreviewImageURL+"ImageOK!")).Do(); err2 != nil {
 							log.Print(err2)
 						}
 				*/
