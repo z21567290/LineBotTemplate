@@ -52,10 +52,17 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+"TextOK!")).Do(); err != nil {
 					log.Print(err)
 				}
-			case *linebot.ImageMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+PreviewImageURL+"ImageOK!")).Do(); err != nil {
+				break;
+			case *linebot.(aaa)):
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+"TextOK!")).Do(); err != nil {
 					log.Print(err)
 				}
+				break;
+
+				/*	case *linebot.ImageMessage:
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+PreviewImageURL+"ImageOK!")).Do(); err != nil {
+						log.Print(err)
+				}*/
 			}
 		}
 	}
