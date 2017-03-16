@@ -59,7 +59,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 			case *linebot.ImageMessage:
 				if _, err2 = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.PreviewImageURL+"ImageOK!")).Do(); err != nil {
-					log.Print(err)
+					log.Print(err2)
 				}
 
 			}
