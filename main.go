@@ -50,6 +50,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil { 
 				//發送訊息的格式
 					log.Print(err)
@@ -69,14 +70,35 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					log.Print(err)
 				}
 				break;
+=======
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+"TextOK!")).Do(); err != nil {
+					log.Print(err)
+				}
+				break
+>>>>>>> test001
 
 				/*	case *linebot.ImageMessage:
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+PreviewImageURL+"ImageOK!")).Do(); err != nil {
 						log.Print(err)
 				}*/
+<<<<<<< HEAD
 >>>>>>> parent of 2ebba92... no message
+=======
+>>>>>>> test001
 			}
 				//---------------------------------------------------------------
 		}
 	}
+	/*
+		for _, event := range events {
+			if event.Type == linebot.EventTypeMessage {
+				switch message := event.Message.(type) {
+				case *linebot.ImageMessage:
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":/n"+message.OriginalContentURL+"/n"+PreviewImageURL+"/n OK!")).Do(); err != nil {
+						log.Print(err)
+					}
+				}
+			}
+		}*/
+
 }
