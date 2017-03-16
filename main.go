@@ -78,16 +78,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			//--------------------------------------------------------------- + message.PreviewImageURL
 		}
 	}
-
-	for _, event := range events {
-		if event.Type == linebot.EventTypeMessage {
-			switch message := event.Message.(type) {
-			case *linebot.ImageMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":/n"+message.OriginalContentURL+"/n"+message.PreviewImageURL+"/n OK!")).Do(); err != nil {
-					log.Print(err)
+	/*
+		for _, event := range events {
+			if event.Type == linebot.EventTypeMessage {
+				switch message := event.Message.(type) {
+				case *linebot.ImageMessage:
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":/n"+message.OriginalContentURL+"/n"+message.PreviewImageURL+"/n OK!")).Do(); err != nil {
+						log.Print(err)
+					}
 				}
 			}
 		}
-	}
-
+	*/
 }
