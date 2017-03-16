@@ -48,17 +48,17 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
-			/*case *linebot.TextMessage:
+			case *linebot.TextMessage:
 
-			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" TextOK!")).Do(); err != nil {
-				//發送訊息的格式
-				log.Print(err)
-			}
-			*/
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" TextOK!")).Do(); err != nil {
+					//發送訊息的格式
+					log.Print(err)
+				}
+
 			//--------------------------------------------------------------
 
 			case *linebot.ImageMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.PreviewImageURL+"ImageOK!")).Do(); err != nil {
+				if _, err2 = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.PreviewImageURL+"ImageOK!")).Do(); err != nil {
 					log.Print(err)
 				}
 
