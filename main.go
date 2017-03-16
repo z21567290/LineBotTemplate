@@ -25,16 +25,8 @@ var bot *linebot.Client
 
 func main() {
 	var err error
-	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
+	bot, err, eer2 = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
-	http.HandleFunc("/callback", callbackHandler)
-	port := os.Getenv("PORT")
-	addr := fmt.Sprintf(":%s", port)
-	http.ListenAndServe(addr, nil)
-
-	var err2 error
-	bot, err2 = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
-	log.Println("Bot:", bot, " err:", err2)
 	http.HandleFunc("/callback", callbackHandler)
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf(":%s", port)
