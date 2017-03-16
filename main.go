@@ -25,7 +25,7 @@ var bot *linebot.Client
 
 func main() {
 	var err error
-	bot, err, eer2 = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
+	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
 	http.HandleFunc("/callback", callbackHandler)
 	port := os.Getenv("PORT")
@@ -35,7 +35,7 @@ func main() {
 }
 
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
-	events, err, err2 := bot.ParseRequest(r)
+	events, err := bot.ParseRequest(r)
 
 	if err != nil {
 		if err == linebot.ErrInvalidSignature {
@@ -46,14 +46,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err2 != nil {
-		if err2 == linebot.ErrInvalidSignature {
-			w.WriteHeader(400)
-		} else {
-			w.WriteHeader(500)
+	/*
+		if err2 != nil {
+			if err2 == linebot.ErrInvalidSignature {
+				w.WriteHeader(400)
+			} else {
+				w.WriteHeader(500)
+			}
+			return
 		}
-		return
-	}
+	*/
 
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
@@ -65,27 +67,27 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					log.Print(err)
 				}
 
-			//--------------------------------------------------------------
-
-			case *linebot.ImageMessage:
-				if _, err2 = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+"ImageOK!")).Do(); err2 != nil {
-					log.Print(err2)
-				}
-
+				//--------------------------------------------------------------
+				/*
+					case *linebot.ImageMessage:
+						if _, err2 = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+"ImageOK!")).Do(); err2 != nil {
+							log.Print(err2)
+						}
+				*/
 			}
 			//--------------------------------------------------------------- + message.PreviewImageURL
 		}
 	}
-	/*
-		for _, event := range events {
-			if event.Type == linebot.EventTypeMessage {
-				switch message := event.Message.(type) {
-				case *linebot.ImageMessage:
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":/n"+message.OriginalContentURL+"/n"+PreviewImageURL+"/n OK!")).Do(); err != nil {
-						log.Print(err)
-					}
+
+	for _, event := range events {
+		if event.Type == linebot.EventTypeMessage {
+			switch message := event.Message.(type) {
+			case *linebot.ImageMessage:
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":/n"+message.OriginalContentURL+"/n"+message.PreviewImageURL+"/n OK!")).Do(); err != nil {
+					log.Print(err)
 				}
 			}
-		}*/
+		}
+	}
 
 }
