@@ -49,6 +49,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
+<<<<<<< HEAD
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil { 
 				//發送訊息的格式
 					log.Print(err)
@@ -58,6 +59,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil 
 					log.Print(err)
 				}
+=======
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+"TextOK!")).Do(); err != nil {
+					log.Print(err)
+				}
+				break;
+			case *linebot.(aaa)):
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+"TextOK!")).Do(); err != nil {
+					log.Print(err)
+				}
+				break;
+
+				/*	case *linebot.ImageMessage:
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+PreviewImageURL+"ImageOK!")).Do(); err != nil {
+						log.Print(err)
+				}*/
+>>>>>>> parent of 2ebba92... no message
 			}
 				//---------------------------------------------------------------
 		}
