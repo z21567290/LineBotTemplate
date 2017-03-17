@@ -70,7 +70,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					log.Print(err)
 				}
 				//out := "謝謝愛我 ，但LINEBOT依然機掰" //fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
-				if _, err2 = strings.Contains(inText, "愛你") {
+				if _, err2 = strings.Contains(inText, "愛你") string{
 					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
 					//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
 						//log.Print(err)
