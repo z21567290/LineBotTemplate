@@ -37,6 +37,7 @@ func main() {
 
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
+	events, err2 := strings.Contains(r)
 
 	if err != nil {
 		if err == linebot.ErrInvalidSignature {
@@ -67,16 +68,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					//發送訊息的格式
 					log.Print(err)
 				}
-				out := "謝謝愛我 ，但LINEBOT依然機掰" //fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
-				if strings.Contains(message.Text == "愛你") {
-					//out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
-						log.Print(err)
+				//out := "謝謝愛我 ，但LINEBOT依然機掰" //fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
+				if _, err2 = strings.Contains(message.Text == "愛你") {
+					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
+					//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
+						//log.Print(err)
 					}
 				}
-				/*if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
 					log.Print(err)
-				}*/
+				}
 
 				/*
 					if _, err := bot.PushMessage(<to>, linebot.NewTextMessage("hello")).Do(); err != nil {
