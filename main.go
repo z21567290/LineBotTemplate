@@ -84,6 +84,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("Lucy:"+message.Text+" Aye")).Do() //message.ID
 				}
 
+				//----------------回聲範例---------------------
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" TextOK!")).Do(); err != nil {
+					//發送訊息的格式
+					log.Print(err)
+				}
+				//----------------------------------------------------------------------
+
 				/*if strings.Contains(message.Text, "愛你") { //_, err2 =
 					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
