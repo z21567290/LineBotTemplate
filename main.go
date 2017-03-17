@@ -64,16 +64,17 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			switch message := event.Message.(type) {
 
 			case *linebot.TextMessage:
+				//inText := strings.ToLower(message.Text)
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" TextOK!")).Do(); err != nil {
 					//發送訊息的格式
 					log.Print(err)
 				}
 				//out := "謝謝愛我 ，但LINEBOT依然機掰" //fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
-				if _, err2 = strings.Contains(message.Text == "愛你") {
+				if _, err2 = strings.Contains(message.Text, "愛你") {
 					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
 					//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
 						//log.Print(err)
-					}
+					//}
 				}
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
 					log.Print(err)
