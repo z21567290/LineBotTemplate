@@ -72,11 +72,15 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" TextOK!")).Do(); err != nil {
 					//發送訊息的格式
 					log.Print(err)
-				} else if strings.Contains(message.Text, "愛你") { //_, err2 =
+					if  strings.Contains(message.Text, "愛你") { //_, err2 =
+						out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
+						bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
+				}
+
+				/*if strings.Contains(message.Text, "愛你") { //_, err2 =
 					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
-
-				}
+				}*/
 				/*
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
 						log.Print(err)
