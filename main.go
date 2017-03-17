@@ -62,7 +62,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			switch message := event.Message.(type) {
 
 			case *linebot.TextMessage:
-				inText := string.ToLower(message.Text)
+				//inText := string.ToLower(message.Text)
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" TextOK!")).Do(); err != nil {
 					//發送訊息的格式
 					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
