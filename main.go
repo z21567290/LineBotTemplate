@@ -88,17 +88,17 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("Lucy:"+message.Text+" Aye")).Do() //message.ID
 				}*/
 				//----------------------------------------------------------------------
-				
+
 			case *linebot.ImageMessage:
-					/*if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+message.PreviewImageURL+"ImageOK!")).Do(); err != nil {
-						log.Print(err)
-					}*/
-				if strings.Contains(message.Text, "rdrrJC"){
+				/*if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+message.PreviewImageURL+"ImageOK!")).Do(); err != nil {
+					log.Print(err)
+				}*/
+				if strings.Contains(message.Text, "rdrrJC") {
 					message.OriginalContentURL = "https://2.bp.blogspot.com/-qb9ZYC7-dAg/Ts0hjukIZnI/AAAAAAAACq0/1xX9ujTZa5g/s1600/JackieChan.png"
 					bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.OriginalContentURL+"ImageOK!")).Do()
-					
+
 				}
-				*/
+
 				//--------------------------------------------------------------
 				/*
 					case *linebot.ImageMessage:
