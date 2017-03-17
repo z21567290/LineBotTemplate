@@ -26,6 +26,7 @@ var bot *linebot.Client
 
 func main() {
 	var err error
+	var err2 error
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
 	http.HandleFunc("/callback", callbackHandler)
@@ -69,8 +70,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					//發送訊息的格式
 					log.Print(err)
 				}
-				out :=fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
-				if _, err2 = strings.Contains(inText, "愛你") string{
+				out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
+				if _, err2 = strings.Contains(inText, "愛你") {
 					//out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
 					//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
 						//log.Print(err)
