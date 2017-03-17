@@ -77,12 +77,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if strings.Contains(inText, "愛你") { //_, err2 =
 					//out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
-					//log.Print(err)
-					//}
+						//log.Print(err)
+					}
 				}
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
-					log.Print(err)
-				}*/
+				/*
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
+						log.Print(err)
+					}*/
 
 				/*
 					if _, err := bot.PushMessage(<to>, linebot.NewTextMessage("hello")).Do(); err != nil {
