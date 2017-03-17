@@ -65,10 +65,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//inText := string.ToLower(message.Text)
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" TextOK!")).Do(); err != nil {
 					//發送訊息的格式
-					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
+					//out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
 					log.Print(err)
 				}
-				/*if strings.Contains(inText, "我愛你") {
+				if strings.Contains(inText == "我愛你") {
 					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
 				}*/
 				/*
