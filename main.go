@@ -80,29 +80,21 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				} else if strings.Contains(message.Text, "你好") || strings.Contains(message.Text, "妳好") {
 					out := fmt.Sprintf("你好")
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
-				} /*else {
+				} else if strings.Contains(message.Text, "rdrrJC") {
+					message.OriginalContentURL = "https://2.bp.blogspot.com/-qb9ZYC7-dAg/Ts0hjukIZnI/AAAAAAAACq0/1xX9ujTZa5g/s1600/JackieChan.png"
+					bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.OriginalContentURL+"ImageOK!")).Do()
+				}
+				/*else {      //回聲功能
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("Lucy:"+message.Text+" Aye")).Do() //message.ID
 				}*/
-
-				/*if strings.Contains(message.Text, "愛你") { //_, err2 =
-					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然機掰")
-					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
-				}*/
-				/*
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil {
-						log.Print(err)
-					}*/
-
-				/*
-					if _, err := bot.PushMessage(<to>, linebot.NewTextMessage("hello")).Do(); err != nil {
-					    ...
-					}
-				*/
+				//----------------------------------------------------------------------
 				/*
 					case *linebot.ImageMessage:
-						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+message.PreviewImageURL+"ImageOK!")).Do(); err != nil {
-							log.Print(err)
-						}
+							/*if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+message.PreviewImageURL+"ImageOK!")).Do(); err != nil {
+								log.Print(err)
+							}
+							bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+message.PreviewImageURL+"ImageOK!")).Do()
+
 				*/
 				//--------------------------------------------------------------
 				/*
