@@ -38,7 +38,7 @@ func main() {
 
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
-	events, err2 := strings.Contains(r)
+	//events, err2 := strings.Contains(r)
 
 	if err != nil {
 		if err == linebot.ErrInvalidSignature {
@@ -77,7 +77,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					//log.Print(err)
 					//}
 				}
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil && err2 == true {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do(); err != nil && {
 					log.Print(err)
 				}
 
