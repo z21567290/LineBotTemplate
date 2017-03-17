@@ -60,12 +60,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	*/
 
+	var inText string
+
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 
 			case *linebot.TextMessage:
-				inText := message.Text
+				inText = message.Text
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" TextOK!")).Do(); err != nil {
 					//發送訊息的格式
 					log.Print(err)
