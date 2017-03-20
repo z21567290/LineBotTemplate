@@ -82,7 +82,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					out := fmt.Sprintf("你好")
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
 					//bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.OriginalContentURL+message.PreviewImageURL)).Do()
-				} else if strings.Contains(IP, "全頻廣播") {
+				} else if strings.Contains((message.Text, "全頻廣播") {
 					IP[0] = "6c65c8b36882491faa32493bfeba736"  //飲茶
 					IP[1] = "b4c929b7ceec4e21912e6e16304ff0ee" //台南吃吃吃
 					//IP[2] ={"6c65c8b36882491faa32493bfeba736","b4c929b7ceec4e21912e6e16304ff0ee"}
