@@ -88,9 +88,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					//IP[1] = "b4c929b7ceec4e21912e6e16304ff0ee" //台南吃吃吃
 					//IP := []string{"6c65c8b36882491faa32493bfeba736", "b4c929b7ceec4e21912e6e16304ff0ee"}
 					//IPP := IP[2]
-					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("*注意*")).Do()
-					IP := event.ReplyToken
-					bot.PushMessage(IP, linebot.NewTextMessage("hello")).Do()
+					//bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("*注意*")).Do()
+					//IP := event.ReplyToken
+					bot.PushMessage(event.ReplyToken, linebot.NewTextMessage("hello")).Do()
 				}
 
 				/* else if strings.Contains(message.Text, "rdrrJC") {
