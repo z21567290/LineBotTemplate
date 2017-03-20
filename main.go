@@ -82,7 +82,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
 					bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.OriginalContentURL+message.PreviewImageURL)).Do()
 				} else if strings.Contains(message.Text, "全頻廣播")  {
-					bot.PushMessage(<to>, linebot.NewTextMessage("hello")).Do() {
+					bot.PushMessage(event.ReplyToken, linebot.NewTextMessage("hello")).Do() {
 
 					}
 				}
