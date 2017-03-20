@@ -81,12 +81,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					out := fmt.Sprintf("你好")
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
 					bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.OriginalContentURL+message.PreviewImageURL)).Do()
-				} else if strings.Contains(message.Text, "全頻廣播")  {
-					bot.PushMessage(event.ReplyToken, linebot.NewTextMessage("hello")).Do() {
-
-					}
+				} else if strings.Contains(message.Text, "全頻廣播") {
+					bot.PushMessage(event.ReplyToken, linebot.NewTextMessage("hello")).Do()
 				}
-				
+
 				/* else if strings.Contains(message.Text, "rdrrJC") {
 					//type:= "image",
 					OURL := fmt.Sprintf("https://2.bp.blogspot.com/-qb9ZYC7-dAg/Ts0hjukIZnI/AAAAAAAACq0/1xX9ujTZa5g/s1600/JackieChan.png")
