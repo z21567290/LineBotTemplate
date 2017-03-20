@@ -81,7 +81,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					out := fmt.Sprintf("你好")
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
 					bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.OriginalContentURL+message.PreviewImageURL)).Do()
-				} /* else if strings.Contains(message.Text, "rdrrJC") {
+				} else if strings.Contains(message.Text, "全頻廣播")  {
+					bot.PushMessage(<to>, linebot.NewTextMessage("hello")).Do() {
+
+					}
+				}
+				
+				/* else if strings.Contains(message.Text, "rdrrJC") {
 					//type:= "image",
 					OURL := fmt.Sprintf("https://2.bp.blogspot.com/-qb9ZYC7-dAg/Ts0hjukIZnI/AAAAAAAACq0/1xX9ujTZa5g/s1600/JackieChan.png")
 					PURL := fmt.Sprintf("https://2.bp.blogspot.com/-qb9ZYC7-dAg/Ts0hjukIZnI/AAAAAAAACq0/1xX9ujTZa5g/s1600/JackieChan.png")
@@ -99,7 +105,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case *linebot.ImageMessage:
 				//if message.ID == "RS232.jpg" {
 				out := fmt.Sprintf("這是圖片")
-				bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+out+message.OriginalContentURL+message.PreviewImageURL)).Do()
+				bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out+message.OriginalContentURL+message.PreviewImageURL)).Do()
 				//}
 				//out := fmt.Sprintf("這是圖片")
 				//bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
