@@ -80,7 +80,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				} else if strings.Contains(message.Text, "你好") || strings.Contains(message.Text, "妳好") {
 					out := fmt.Sprintf("你好")
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
-				} /*else if strings.Contains(message.Text, "rdrrJC") {
+				} else if strings.Contains(message.Text, "rdrrJC") {
+						//type:= "image",
+						OURL := "https://2.bp.blogspot.com/-qb9ZYC7-dAg/Ts0hjukIZnI/AAAAAAAACq0/1xX9ujTZa5g/s1600/JackieChan.png",
+						PURL := "https://2.bp.blogspot.com/-qb9ZYC7-dAg/Ts0hjukIZnI/AAAAAAAACq0/1xX9ujTZa5g/s1600/JackieChan.png"
+						bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage+OURL+PURL+"ImageOK!")).Do()
+				
+				/*else if strings.Contains(message.Text, "rdrrJC") {
 					message.OriginalContentURL = "https://2.bp.blogspot.com/-qb9ZYC7-dAg/Ts0hjukIZnI/AAAAAAAACq0/1xX9ujTZa5g/s1600/JackieChan.png"
 					bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.OriginalContentURL+"ImageOK!")).Do()
 				}*/
@@ -101,13 +107,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}*/
 
 				
-					if strings.Contains(message.Text, "rdrrJC") {
+				/*	if strings.Contains(message.Text, "rdrrJC") {
 						//type:= "image",
-						OriginalContentURL := "https://2.bp.blogspot.com/-qb9ZYC7-dAg/Ts0hjukIZnI/AAAAAAAACq0/1xX9ujTZa5g/s1600/JackieChan.png",
-						PreviewImageURL := "https://2.bp.blogspot.com/-qb9ZYC7-dAg/Ts0hjukIZnI/AAAAAAAACq0/1xX9ujTZa5g/s1600/JackieChan.png"
-						bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.OriginalContentURL+message.PreviewImageURL+"ImageOK!")).Do()
+						OURL := "https://2.bp.blogspot.com/-qb9ZYC7-dAg/Ts0hjukIZnI/AAAAAAAACq0/1xX9ujTZa5g/s1600/JackieChan.png",
+						PURL := "https://2.bp.blogspot.com/-qb9ZYC7-dAg/Ts0hjukIZnI/AAAAAAAACq0/1xX9ujTZa5g/s1600/JackieChan.png"
+						bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessageOURL+PURL+"ImageOK!")).Do()
 
-					}
+					}*/
 				
 				//--------------------------------------------------------------
 				/*
