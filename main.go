@@ -97,8 +97,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 			case *linebot.ImageMessage:
 				//if message.ID == "RS232.jpg" {
-				out := fmt.Sprintf("這是RS232接頭")
-				bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+out+message.OriginalContentURL+message.PreviewImageURL+message.Text)).Do()
+				out := fmt.Sprintf("這是圖片")
+				bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+out+message.OriginalContentURL+message.PreviewImageURL)).Do()
 				//}
 				//out := fmt.Sprintf("這是圖片")
 				//bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
