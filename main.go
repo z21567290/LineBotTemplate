@@ -75,15 +75,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//----------------------------------------------------------------------
 				//----------------關鍵字回復--------------------
 				if strings.Contains(message.Text, "愛你") {
+					IP := event.ReplyToken
 					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然可惡")
-					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
+					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(IP+" : "+out)).Do()
 				} else if strings.Contains(message.Text, "你好") || strings.Contains(message.Text, "妳好") {
 					out := fmt.Sprintf("你好")
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
-					bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.OriginalContentURL+message.PreviewImageURL)).Do()
-				} else if strings.Contains(message.Text, "全頻廣播") {
-					bot.PushMessage(event.ReplyToken, linebot.NewTextMessage("hello")).Do()
-				}
+					//bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.OriginalContentURL+message.PreviewImageURL)).Do()
+				} /*else if strings.Contains(message.Text, "全頻廣播") {
+					bot.PushMessage(<event.ReplyToken>, linebot.NewTextMessage("hello")).Do()
+				}*/
 
 				/* else if strings.Contains(message.Text, "rdrrJC") {
 					//type:= "image",
