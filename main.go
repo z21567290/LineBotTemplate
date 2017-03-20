@@ -83,11 +83,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
 					//bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.OriginalContentURL+message.PreviewImageURL)).Do()
 				} else if strings.Contains(message.Text, "全頻廣播") {
-					IP[0] = "6c65c8b36882491faa32493bfeba736"  //飲茶
-					IP[1] = "b4c929b7ceec4e21912e6e16304ff0ee" //台南吃吃吃
+					IP[0] = "6c65c8b36882491faa32493bfeba736" //飲茶
+					//IP[1] = "b4c929b7ceec4e21912e6e16304ff0ee" //台南吃吃吃
 					//IP[2] ={"6c65c8b36882491faa32493bfeba736","b4c929b7ceec4e21912e6e16304ff0ee"}
 					//IPP := IP[2]
-					bot.PushMessage(IP, linebot.NewTextMessage("hello")).Do()
+					bot.PushMessage(IP[0], linebot.NewTextMessage("hello")).Do()
 				}
 
 				/* else if strings.Contains(message.Text, "rdrrJC") {
