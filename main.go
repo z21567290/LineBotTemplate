@@ -60,8 +60,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	*/
 
-	var IP [2]string
-	var Ip1 string
+	//var IP [2]string
+	//var Ip1 string
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
