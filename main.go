@@ -96,10 +96,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			//----------------------------------------------------------------------
 
 			case *linebot.ImageMessage:
-				if Message.ID == "RS232.jpg" {
-					out := fmt.Sprintf("這是圖片")
-					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
-				}
+				//if Message.ID == "RS232.jpg" {
+				out := fmt.Sprintf("這是圖片")
+				bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out+message.OriginalContentURL+message.PreviewImageURL)).Do()
+				//}
 				//out := fmt.Sprintf("這是圖片")
 				//bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
 				/*if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.ID+":"+message.OriginalContentURL+message.PreviewImageURL+"ImageOK!")).Do(); err != nil {
