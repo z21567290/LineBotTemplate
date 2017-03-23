@@ -74,7 +74,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}*/
 				//----------------------------------------------------------------------
 				//----------------關鍵字回復--------------------
-				if strings.Contains(message.Text, "愛你") || strings.Contains(message.Text, "愛妳") {
+				if strings.Contains(message.Text, "/help") || strings.Contains(message.Text, "/HELP") {
+					out := fmt.Sprintf("你好 我是Lucy 目前能用的指令有\n 愛你/妳\n 你/妳好\n 海德格\n 天線寶寶\n 幾點了\n 姆咪姆咪")
+					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
+				} else if strings.Contains(message.Text, "愛你") || strings.Contains(message.Text, "愛妳") {
 					//IP := event.ReplyToken
 					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然可惡")
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(event.ReplyToken+" : "+out)).Do()
