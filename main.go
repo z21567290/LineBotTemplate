@@ -74,7 +74,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}*/
 				//----------------------------------------------------------------------
 				//----------------關鍵字回復--------------------
-				if strings.Contains(message.Text, "愛你") {
+				if strings.Contains(message.Text, "愛你") || strings.Contains(message.Text, "愛妳") {
 					//IP := event.ReplyToken
 					out := fmt.Sprintf("謝謝愛我 ，但LINEBOT依然可惡")
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(event.ReplyToken+" : "+out)).Do()
@@ -82,6 +82,21 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					out := fmt.Sprintf("你好")
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
 					//bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(message.OriginalContentURL+message.PreviewImageURL)).Do()
+				} else if strings.Contains(message.Text, "海德格") {
+					out := fmt.Sprintf("救我")
+					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
+				} else if strings.Contains(message.Text, "天線寶寶") {
+					out := fmt.Sprintf("是你")
+					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
+				} else if strings.Contains(message.Text, "幾點了") {
+					out := fmt.Sprintf("要多久")
+					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
+				} else if strings.Contains(message.Text, "c8763") || strings.Contains(message.Text, "星爆氣流斬") {
+					out := fmt.Sprintf("噓")
+					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
+				} else if strings.Contains(message.Text, "姆咪姆咪") {
+					out := fmt.Sprintf("心動動")
+					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
 				} else if strings.Contains(message.Text, "全頻廣播") {
 
 					//IP := event.ReplyToken //飲茶
