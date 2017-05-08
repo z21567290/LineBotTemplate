@@ -48,20 +48,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
-
-	/*
-		if err2 != nil {
-			if err2 == linebot.ErrInvalidSignature {
-				w.WriteHeader(400)
-			} else {
-				w.WriteHeader(500)
-			}
-			return
-		}
-	*/
-
-	//var IP [2]string
-	//var Ip1 string
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
@@ -100,6 +86,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				} else if strings.Contains(message.Text, "姆咪姆咪") {
 					out := fmt.Sprintf("心動動")
 					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(out)).Do()
+				} else if strings.Contains(message.Text, "1") {
+					out1 :=
+						bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(out)).Do()
 				} else if strings.Contains(message.Text, "全頻廣播") {
 
 					//IP := event.ReplyToken //飲茶
@@ -174,4 +163,5 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	*/
+
 }
